@@ -57,9 +57,9 @@ A matriz de confusão nos permite entender exatamente quais classes o modelo est
 | plastic     | 26 | 46 | 72 | 36.1% | Baixa; grande confusão com glass (23 erros). |
 | trash       | 4  | 16 | 20 | 20.0% | Menor acurácia; altamente heterogênea. |
 
-* O modelo é excelente em identificar **`paper` (papel)**. Na linha "paper", ele acertou 76 vezes, com pouquíssimas confusões.
+* O modelo é excelente em identificar **`paper` (papel)**. Na linha "paper", ele acertou 76 vezes, com pouquíssimas confusões. Isso provavelmente ocorre devido à grande quantidade de imagens da classe `paper` no dataset.
 * O modelo teve um desempenho muito ruim com **`plastic` (plástico)**. Na linha "plastic", ele só acertou 7 vezes. A maioria das imagens de plástico foi classificada incorretamente como `paper` (26 vezes) ou `glass` (23 vezes).
-* A classe **`trash` (lixo)** também teve um desempenho fraco, acertando apenas 4 vezes e sendo frequentemente confundida com `paper` (7 vezes) e `glass` (6 vezes).
+* A classe **`trash` (lixo)** também teve um desempenho fraco, acertando apenas 4 vezes e sendo frequentemente confundida com `paper` (7 vezes) e `glass` (6 vezes). A causa disso pode ser atribuída à falta de imagens da classe `trash` no dataset, tornando-o pouco confiável para a identificação dessa classse.
 
 **Principais Confusões Observadas:**
 1.  **`plastic` -> `paper` (26 vezes):** O modelo confunde muito plástico com papel.
