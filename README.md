@@ -44,7 +44,18 @@ A análise do gráfico de acurácia (treino vs. teste) revela dois pontos princi
 
 ### Matriz de Confusão
 
-A matriz de confusão nos permite entender exatamente quais classes o modelo está confundindo.
+A matriz de confusão nos permite entender exatamente quais classes o modelo está confundindo. A performance é determinada pela relação entre os acertos (diagonal principal) e o total de amostras por linha (classe verdadeira).
+
+### Tabela de Performance por Classe
+
+| Classe     | Acertos (VP) | Erros (FN) | Total | Taxa de Acerto | Observações |
+|-----------|--------------|------------|-------|-----------------|-------------|
+| paper       | 76 | 13 | 89 | 85.4% | Classe de maior precisão. |
+| cardboard   | 24 | 36 | 60 | 40.0% | Baixo acerto; grande confusão com paper. |
+| glass       | 45 | 30 | 75 | 60.0% | Razoável; forte confusão com paper (11 erros). |
+| metal       | 30 | 31 | 61 | 49.2% | Mediana; confusão com paper (12 erros). |
+| plastic     | 26 | 46 | 72 | 36.1% | Baixa; grande confusão com glass (23 erros). |
+| trash       | 4  | 16 | 20 | 20.0% | Menor acurácia; altamente heterogênea. |
 
 * O modelo é excelente em identificar **`paper` (papel)**. Na linha "paper", ele acertou 76 vezes, com pouquíssimas confusões.
 * O modelo teve um desempenho muito ruim com **`plastic` (plástico)**. Na linha "plastic", ele só acertou 7 vezes. A maioria das imagens de plástico foi classificada incorretamente como `paper` (26 vezes) ou `glass` (23 vezes).
