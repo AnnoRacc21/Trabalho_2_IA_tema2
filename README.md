@@ -29,16 +29,13 @@ O projeto utiliza o dataset **TrashNet**, que consiste em 2.527 imagens dividida
 
 ### Metodologia
 
-O modelo é uma Rede Neural Convolucional (CNN) padrão, construída em Keras (TensorFlow). A arquitetura consiste em 3 blocos de convolução (Conv2D -> ReLU -> MaxPooling2D), seguidos por um classificador (Flatten -> Dense -> Dropout -> Dense). A camada de saída final possui 6 neurônios e uma função de ativação `softmax` para a classificação multiclasse.
-[cite_start]Para o carregamento e pré-processamento dos dados, foi utilizado o `ImageDataGenerator` do Keras, que também foi responsável por aplicar o *data augmentation* em tempo real (como rotação, zoom e inversão)[cite: 18, 19].
+O modelo é uma Rede Neural Convolucional (CNN) padrão, construída em Keras (TensorFlow). A arquitetura consiste em 3 blocos de convolução (Conv2D -> ReLU -> MaxPooling2D), seguidos por um classificador (Flatten -> Dense -> Dropout -> Dense). A camada de saída final possui 6 neurônios e uma função de ativação `softmax` para a classificação multiclasse. Para o carregamento e pré-processamento dos dados, foi utilizado o `ImageDataGenerator` do Keras, que também foi responsável por aplicar o *data augmentation* em tempo real (como rotação, zoom e inversão).
 
 ## 2. Análise dos Resultados
 
-[cite_start]A avaliação do modelo foi dividida em duas partes: a análise da acurácia ao longo do tempo e a análise detalhada dos erros através da matriz de confusão[cite: 37].
+A avaliação do modelo foi dividida em duas partes: a análise da acurácia ao longo do tempo e a análise detalhada dos erros através da matriz de confusão.
 
 ### Gráfico de Acurácia
-
-![Gráfico de Acurácia](acuracy-plot.png)
 
 A análise do gráfico de acurácia (treino vs. teste) revela dois pontos principais:
 
@@ -47,13 +44,11 @@ A análise do gráfico de acurácia (treino vs. teste) revela dois pontos princi
 
 ### Matriz de Confusão
 
-![Matriz de Confusão](Sem título.png)
+A matriz de confusão nos permite entender exatamente quais classes o modelo está confundindo.
 
-[cite_start]A matriz de confusão nos permite entender exatamente *quais* classes o modelo está confundindo[cite: 37].
-
-* **Melhor Classe (Mais Acertos):** O modelo é excelente em identificar **`paper` (papel)**. Na linha "paper", ele acertou 76 vezes, com pouquíssimas confusões.
-* **Pior Classe (Mais Erros):** O modelo teve um desempenho muito ruim com **`plastic` (plástico)**. Na linha "plastic", ele só acertou 7 vezes. A maioria das imagens de plástico foi classificada incorretamente como `paper` (26 vezes) ou `glass` (23 vezes).
-* **Segunda Pior Classe:** A classe **`trash` (lixo)** também teve um desempenho fraco, acertando apenas 4 vezes e sendo frequentemente confundida com `paper` (7 vezes) e `glass` (6 vezes).
+* O modelo é excelente em identificar **`paper` (papel)**. Na linha "paper", ele acertou 76 vezes, com pouquíssimas confusões.
+* O modelo teve um desempenho muito ruim com **`plastic` (plástico)**. Na linha "plastic", ele só acertou 7 vezes. A maioria das imagens de plástico foi classificada incorretamente como `paper` (26 vezes) ou `glass` (23 vezes).
+* A classe **`trash` (lixo)** também teve um desempenho fraco, acertando apenas 4 vezes e sendo frequentemente confundida com `paper` (7 vezes) e `glass` (6 vezes).
 
 **Principais Confusões Observadas:**
 1.  **`plastic` -> `paper` (26 vezes):** O modelo confunde muito plástico com papel.
@@ -62,13 +57,11 @@ A análise do gráfico de acurácia (treino vs. teste) revela dois pontos princi
 
 ## 3. Conclusão sobre o Impacto do Data Augmentation
 
-O *data augmentation* (aumento de dados) era uma técnica obrigatória para este projeto, dado o dataset pequeno e desbalanceado. O objetivo principal era combater o overfitting.
+O data augmentation (aumento de dados) era uma técnica obrigatória para este projeto, dado o dataset pequeno e desbalanceado. O objetivo principal era combater o overfitting. Com base nos resultados, podemos concluir que:
 
-Com base nos resultados, podemos concluir que:
+* O data augmentation foi necessário, mas não suficiente. Sem ele, o overfitting (a lacuna entre as curvas azul e vermelha no gráfico) provavelmente seria ainda mais rápido e severo. Ele permitiu que o modelo treinasse por mais épocas sem divergir completamente.
 
-O data augmentation foi necessário, mas não suficiente. Sem ele, o overfitting (a lacuna entre as curvas azul e vermelha no gráfico) provavelmente seria ainda mais rápido e severo. Ele permitiu que o modelo treinasse por mais épocas sem divergir completamente.
-
-No entanto, o *overfitting* ainda é o principal problema do modelo. A performance no conjunto de teste (validação) permaneceu baixa e instável. Isso indica que, embora o *data augmentation* tenha ajudado, ele não conseguiu superar as limitações de um dataset pequeno e desbalanceado. Para melhorar o desempenho, seriam necessárias mais imagens reais, uma arquitetura de modelo diferente (talvez *transfer learning*) ou técnicas de aumento de dados mais sofisticadas.
+* No entanto, o overfitting ainda é o principal problema do modelo. A performance no conjunto de teste (validação) permaneceu baixa e instável. Isso indica que, embora o *data augmentation* tenha ajudado, ele não conseguiu superar as limitações de um dataset pequeno e desbalanceado. Para melhorar o desempenho, seriam necessárias mais imagens reais, uma arquitetura de modelo diferente (talvez *transfer learning*) ou técnicas de aumento de dados mais sofisticadas.
 
 ## 4. Como Executar
 
