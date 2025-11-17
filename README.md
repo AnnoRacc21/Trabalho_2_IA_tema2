@@ -15,7 +15,7 @@ Link para o Arquivo Google Colab: https://colab.research.google.com/drive/1h_GK3
 
 # Projeto 2: Classificação de Lixo para Reciclagem (TrashNet)
 
-Este repositório contém o código e a análise para o segundo trabalho da disciplina FIA (Prof. Edjard Mota), focado na construção de um classificador de imagens para resíduos.
+Este repositório contém o código e a análise para o segundo trabalho da disciplina de Inteligência Artificial (Prof. Edjard Mota), focado na construção de um classificador de imagens para resíduos.
 
 ## 1. Descrição do Projeto
 
